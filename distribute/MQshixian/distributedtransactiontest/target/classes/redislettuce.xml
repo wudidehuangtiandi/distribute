@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+    <!--指定配置文件的位置,放到spring种统一配置-->
+
+
+
+
+    <!--name：表示你的连接池的名称也就是你要访问连接池的地址
+     auth：是连接池管理权属性，Container表示容器管理
+     type：是对象的类型
+     driverClassName：是数据库驱动的名称
+     url：是数据库的地址
+     username：是登陆数据库的用户名
+     password：是登陆数据库的密码
+     maxIdle，最大空闲数，数据库连接的最大空闲时间。超过空闲时间，数据库连
+     接将被标记为不可用，然后被释放。设为0表示无限制。
+     MaxActive，连接池的最大数据库连接数。设为0表示无限制。
+     maxWait ，最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示
+     无限制。
+     *maxActive:最大连接数据库连接数,设 0 为没有限制
+     *maxIdle:最大等待连接中的数量,设 0 为没有限制
+     *maxWait:最大等待毫秒数, 单位为 ms, 超过时间会出错误信息
+     一般把maxActive设置成可能的并发量就行了
+     maxActive、maxIdle和maxWait参数：
+     maxActive是最大激活连接数，这里取值为20，表示同时最多有20个数据库连　
+     接。maxIdle是最大的空闲连接数，这里取值为20，表示即使没有数据库连接时依然可以保持20空闲的
+     连接，而不被清除，随时处于待命状态。MaxWait是最大等待秒钟数，这里取值-1，表示无限等待，直到
+     超时为止，也可取值9000，表示9秒后超时。
+     maxWait=5000
+     maxActive=50
+     maxIdle=5
+     maxIdle，最大空闲数，数据库连接的最大空闲时间。超过空闲时间，数据库连
+     接将被标记为不可用，然后被释放。设为0表示无限制。
+     MaxActive，连接池的最大数据库连接数。设为0表示无限制。
+     maxWait ，最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示
+     无限制。
+     *maxActive:最大连接数据库连接数,设 0 为没有限制
+     *maxIdle:最大等待连接中的数量,设 0 为没有限制
+     *maxWait:最大等待毫秒数, 单位为 ms, 超过时间会出错误信息
+     一般把maxActive设置成可能的并发量就行了-->
+
+
+    <!--链接池配置-->
+    <bean id="genericObjectPoolConfig" class="org.apache.commons.pool2.impl.GenericObjectPoolConfig">
+        <property name="maxIdle" value="${redis.maxIdle}"/>
+        <property name="maxTotal" value="${redis.maxTotal}"/>
+        <property name="maxWaitMillis" value="${redis.timeout}"></property>
+    </bean>
+    <!--自定义的实例工厂类-->
+    <bean id="myconfig" class="com.configs.config">
+       <property name="genericObjectPoolConfig" ref="genericObjectPoolConfig"></property>
+    </bean>
+
+    <bean id="lettuceClientConfiguration" factory-bean="myconfig" factory-method="getLettucePoolingClientConfiguration"></bean>
+
+<bean id="redisNode" class="org.springframework.data.redis.connection.RedisNode">
+    <constructor-arg value="${redis.host}"></constructor-arg>
+    <constructor-arg value="${redis.port}"></constructor-arg>
+</bean>
+
+    <!--哨兵节点-->
+    <bean id="redisSentinelConfiguration" class="org.springframework.data.redis.connection.RedisSentinelConfiguration">
+        <property name="sentinels">
+            <list>
+                <ref bean="redisNode"></ref>
+            </list>
+        </property>
+
+    </bean>
+
+
+    <bean id="redisConnectionFactory" class="com.configs.config2">
+        <property name="shareNativeConnection" value="false"></property>
+        <property name="redisSentinelConfiguration" ref="redisSentinelConfiguration"></property>
+        <property name="lettuceClientConfiguration" ref="lettuceClientConfiguration"></property>
+    </bean>
+
+    <!-- 工厂类注入到redisTemplate -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="redisConnectionFactory" />
+        <!--默认实现使用StringRedisSerializer-->
+        <!--<property name="keySerializer">
+            <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"></bean>
+        </property>
+        <property name="valueSerializer">
+            <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"></bean>
+        </property>-->
+        <property name="keySerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+        </property>
+        <property name="valueSerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+        </property>
+    </bean>
+
+
+
+
+</beans>

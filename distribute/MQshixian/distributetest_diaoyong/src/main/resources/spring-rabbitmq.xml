@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/rabbit
+           https://www.springframework.org/schema/rabbit/spring-rabbit.xsd
+           http://www.springframework.org/schema/beans
+           https://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--direct配置-->
+
+
+
+    <!--其实就是<context:property-placeholder location="classpath:jdbcConfig.properties"></context:property-placeholder> 搞得花里胡哨的,不过这么配置可以解决多个导入配置重复问题，这边采用在spring中统一配置来实现-->
+    <!--<bean id="annotationPropertyConfigurerAmqp"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="order" value="1" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="locations">
+            <list>
+                <value>classpath:rabbitmq.properties</value>
+            </list>
+        </property>
+    </bean>-->
+
+    <!--用于封装对象-->
+    <bean id="jsonMessageConverter"
+          class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter" />
+
+
+    <!--链接工厂-->
+    <rabbit:connection-factory id="connectionFactory"
+                               host="${rabbit.host}" port="${rabbit.port}" username="${rabbit.user}"
+                               password="${rabbit.password}" virtual-host="${rabbit.virtual-host}" publisher-confirms="true" publisher-returns="true" />
+
+    <rabbit:admin connection-factory="connectionFactory" />
+
+    <!-- queue 队列声明 -->
+    <rabbit:queue durable="true" auto-delete="false"
+                  exclusive="false" name="${rabbit.direct.queue}" ignore-declaration-exceptions="true" />
+
+    <!-- exchange queue binging key 绑定 -->
+    <rabbit:direct-exchange name="${rabbit.direct.exchange}"
+                            durable="true" auto-delete="false" ignore-declaration-exceptions="true" >
+        <rabbit:bindings>
+            <rabbit:binding queue="${rabbit.direct.queue}" key="${rabbit.direct.key}" />
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <!--回调监听-->
+    <bean id="confirmCallBackLinster" class="com.Listener.ConfirmCallBackLinster"></bean>
+
+    <!-- spring template声明  mandatory必须true回调才会生效-->
+    <rabbit:template id="amqpDirectTemplate" exchange="${rabbit.direct.exchange}"
+                     routing-key="${rabbit.direct.key}" connection-factory="connectionFactory"
+                     message-converter="jsonMessageConverter"  confirm-callback="confirmCallBackLinster" return-callback="confirmCallBackLinster" mandatory="true"  />
+
+
+
+    <!--开启注解配置-->
+    <rabbit:annotation-driven/>
+
+    <!--监听者工厂-->
+    <bean id="rabbitListenerContainerFactory"
+          class="org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="concurrentConsumers" value="3" />
+        <property name="maxConcurrentConsumers" value="10" />
+        <property name="messageConverter" ref="jsonMessageConverter" />
+        <property name="acknowledgeMode" value="MANUAL"></property>
+    </bean>
+</beans>

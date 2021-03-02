@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <beans xmlns="http://www.springframework.org/schema/beans"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <!-- 会话cookie模板 -->
+    <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <!-- 写到cookie的name值 -->
+        <constructor-arg value="sid"/>
+        <!-- 设置js是否可以访问cookie，true 不能访问 （防止JS脚本获取cookie）-->
+        <property name="httpOnly" value="true"></property>
+        <!-- 保存时长30天，以秒为单位 -->
+        <property name="maxAge" value="2592000"></property>
+    </bean>
+
+    <!--
+    rememberMe 管理器 ***实体类要实现序列化接口 ，并添加默认的序列化版本号，
+    ***注销后，记住我要清空重新登录,***authc要改成user拦截
+    -->
+    <bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+        <!-- cipherKey是加密rememberMe cookie 的密钥；默认AES算法 -->
+        <property name="cipherKey" value="#{T(org.apache.shiro.codec.Base64).decode('4AvVhmFLUs0KTA3Kprsdag==')}"/>
+        <!-- 引入上面定义的cookie模板 -->
+        <property name="cookie" ref="rememberMeCookie"/>
+    </bean>
+
+
+
+    <!-- 缓存管理器 -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <!-- cache配置文件 -->
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"></property>
+    </bean>
+
+    <!-- 配置自定义Realm -->
+    <bean id="myRealm4" class="com.shiro.myshiro.MyRealm4">
+        <property name="credentialsMatcher">
+            <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher"><!--凭证匹配器-->
+                <property name="hashAlgorithmName" value="MD5"></property><!--指定加密方法，此时前台的密码就被加密了-->
+                <property name="hashIterations" value="1024"></property><!--加密1024次-->
+            </bean>
+        </property>
+    </bean>
+
+    <!--多Realm配置（不授权时，授权时不这么配！！！） 1.在上面那一步配置多个自定义Realm 2.这一步将上一步的realm注入进去
+     3.将authenticator放入securityManager代替单个时的realm属性（属性名就叫authenticator）
+     认证时执行顺序从上往下执行
+     -->
+ <!-- <bean id="authenticator" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
+        <property name="realms">
+            <list>
+                <ref bean="myRealm3"></ref>
+                <ref bean="myRealm2"></ref>
+            </list>
+        </property>
+        <property name="authenticationStrategy">
+            <bean class="org.apache.shiro.authc.pam.AllSuccessfulStrategy"></bean>&lt;!&ndash;全部通过认证才行&ndash;&gt;
+            &lt;!&ndash;默认是AtLeastOneSuccessfulStrategy，实现一个即可，还可以配置第一个实现即返回&ndash;&gt;
+        </property>
+    </bean>-->
+
+    <!--涉及授权时如果多Realm应该将realms属性配置在securityManager中，它会做个强转使得realms转变为ModularRealmAuthenticator的realms-->
+    <!--认证规则，其实这个就是默认规则,authenticator不可和realm属性共存-->
+ <!--   <bean id="authenticator" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
+        <property name="authenticationStrategy">
+            <bean class="org.apache.shiro.authc.pam.AtLeastOneSuccessfulStrategy"></bean>
+        </property>
+    </bean>-->
+
+
+
+    <!-- securityManager -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+       <!-- &lt;!&ndash;session管理方式&ndash;&gt;
+        <property name="sessionMode" value="native"/>-->
+        <!--注入数据源realm-->
+        <property name="realm" ref="myRealm4"></property>
+        <!-- 加入remember管理 -->
+        <property name="rememberMeManager" ref="rememberMeManager"></property>
+        <!-- 加入缓存管理 -->
+        <property name="cacheManager" ref="cacheManager"></property>
+        <!--认证规则-->
+       <!-- <property name="authenticator" ref="authenticator"></property> --><!--不可和realm共存-->
+        <!--多realms配置（如果有的话，要是涉及授权需要在这配置而不是在ModularRealmAuthenticator直接配）-->
+       <!-- <property name="realms">
+            <list>
+                <ref bean="myRealm3"></ref>
+                <ref bean="myRealm2"></ref>
+            </list>
+        </property>-->
+    </bean>
+
+
+    <!-- ShiroFilterFactoryBean id必须和web.xml中一致 -->
+        <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+            <!-- 调用权限管理器 -->
+            <property name="securityManager" ref="securityManager"/>
+            <!-- 没有登录转发到登录页面 -->
+            <property name="loginUrl" value="/page/login"/>
+            <!-- 登录成功的url -->
+            <property name="successUrl" value="/page/success"/>
+            <!-- 没有权限跳转的页面 -->
+            <property name="unauthorizedUrl" value="/page/unauthor"/>
+            <!--配置哪些需要保护以及访问它们所需的权限 （拦截器配置）-->
+            <!--
+          我们平时使用就是anno，任何人都可以访问（匿名访问）；authc：必须是登录之后才能进行访问，
+          不包括remember me；user：登录用户才可以访问，包含remember me；perms：指定过滤规则，
+          这个一般是扩展使用，不会使用原生的；其中filterChainDefinitions 就是指定过滤规则的，
+          一般公共配置使用配置文件，例如jss css img这些资源文件是不拦截的，相关业务的url配置到数据库，
+          有过滤器查询数据库进行权限判断。
+          logout，退出所需的
+          拦截规则：从上到下，从左到右，如果有匹配的规则就会阻断并返回，下面的就不会执行了。
+            -->
+            <property name="filterChainDefinitions">
+                <value>
+                    /js/** = anon
+                    /css/** = anon
+                    /pages/login=anon<!--登陆页面可以匿名-->
+                    <!--登陆请求可以匿名-->
+                    /shiro/login=anon
+                    /logout=logout<!--退出-->
+                    /** = user
+                </value><!--这么配外部的index理论上不能访问，会跳转到登陆页面-->
+            </property>
+
+            <!--注入退出的自定义过滤器，包括的步骤有，自定义退出过滤器，配置它要重定向的路径，注入shiroFilter的过滤器组-->
+            <property name="filters">
+                <map>
+                    <entry key="logout" value-ref="logoutFilter"/>
+                </map>
+            </property>
+
+            <!--1.这个filterChainDefinitions也可以用换成类实现 过程如下(这个配置实际就是抽取过滤器，效果和filterChainDefinitions配置相同)-->
+            <!--<property name="filterChainDefinitionMap" ref="filterChainDefinitionMap"></property>-->
+        </bean>
+
+    <!--2.filterChainDefinitions的替换,配置一个bean，该bean实际上是个map,通过实例工厂方法实现-->
+  <!--  <bean id="filterChainDefinitionMapBuilder" class="com.shiro.FilterChainDefinitionMapBuilder"></bean>
+    <bean id="filterChainDefinitionMap" factory-bean="filterChainDefinitionMapBuilder" factory-method="build"></bean>-->
+
+
+    <!--自定义LogoutFilter,退出-->
+    <!--直接在页面相应的退出操作中配置链接：/logout   即可，并不需要实现controller层-->
+    <bean id="logoutFilter" class="com.shiro.SystemLogoutFilter">
+        <property name="redirectUrl" value="/page/login"/>
+    </bean>
+
+
+
+    <!-- shiro的生命周期交给spring管理 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"></property>
+    </bean>
+
+
+     <!--二选一 但是必须在配置了LifecycleBeanPostProcessor才可以用-->
+     <!-- 启动shiro注解(必须放在spring MVC 配置文件那边) -->
+     <!-- <aop:config proxy-target-class="true"></aop:config>
+
+     可以配置在shiro或springmvc这里
+     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor" >
+     <property name="securityManager" ref="securityManager"></property>
+     </bean> -->
+
+
+    </beans>

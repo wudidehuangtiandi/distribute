@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/discover-server/discover-server.iml" filepath="$PROJECT_DIR$/discover-server/discover-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/dtx.iml" filepath="$PROJECT_DIR$/.idea/dtx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dtx-notifymsg-demo/dtx-notifymsg-demo.iml" filepath="$PROJECT_DIR$/dtx-notifymsg-demo/dtx-notifymsg-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dtx-notifymsg-demo/dtx-notifymsg-demo-bank1/dtx-notifymsg-demo-bank1.iml" filepath="$PROJECT_DIR$/dtx-notifymsg-demo/dtx-notifymsg-demo-bank1/dtx-notifymsg-demo-bank1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dtx-notifymsg-demo/dtx-notifymsg-demo-bank2/dtx-notifymsg-demo-bank2.iml" filepath="$PROJECT_DIR$/dtx-notifymsg-demo/dtx-notifymsg-demo-bank2/dtx-notifymsg-demo-bank2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dtx-notifymsg-demo/dtx-notifymsg-demo-pay/dtx-notifymsg-demo-pay.iml" filepath="$PROJECT_DIR$/dtx-notifymsg-demo/dtx-notifymsg-demo-pay/dtx-notifymsg-demo-pay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dtx-seata-demo/dtx-seata-demo.iml" filepath="$PROJECT_DIR$/dtx-seata-demo/dtx-seata-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dtx-seata-demo/dtx-seata-demo-bank1/dtx-seata-demo-bank1.iml" filepath="$PROJECT_DIR$/dtx-seata-demo/dtx-seata-demo-bank1/dtx-seata-demo-bank1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dtx-seata-demo/dtx-seata-demo-bank2/dtx-seata-demo-bank2.iml" filepath="$PROJECT_DIR$/dtx-seata-demo/dtx-seata-demo-bank2/dtx-seata-demo-bank2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dtx-tcc-demo/dtx-tcc-demo.iml" filepath="$PROJECT_DIR$/dtx-tcc-demo/dtx-tcc-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dtx-tcc-demo/dtx-tcc-demo-bank1/dtx-tcc-demo-bank1.iml" filepath="$PROJECT_DIR$/dtx-tcc-demo/dtx-tcc-demo-bank1/dtx-tcc-demo-bank1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dtx-tcc-demo/dtx-tcc-demo-bank2/dtx-tcc-demo-bank2.iml" filepath="$PROJECT_DIR$/dtx-tcc-demo/dtx-tcc-demo-bank2/dtx-tcc-demo-bank2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dtx-txmsg-demo/dtx-txmsg-demo.iml" filepath="$PROJECT_DIR$/dtx-txmsg-demo/dtx-txmsg-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dtx-txmsg-demo/dtx-txmsg-demo-bank1/dtx-txmsg-demo-bank1.iml" filepath="$PROJECT_DIR$/dtx-txmsg-demo/dtx-txmsg-demo-bank1/dtx-txmsg-demo-bank1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dtx-txmsg-demo/dtx-txmsg-demo-bank2/dtx-txmsg-demo-bank2.iml" filepath="$PROJECT_DIR$/dtx-txmsg-demo/dtx-txmsg-demo-bank2/dtx-txmsg-demo-bank2.iml" />
+    </modules>
+  </component>
+</project>

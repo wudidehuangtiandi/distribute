@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="distributetest_diaoyong:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="distributetest_diaoyong.war">
+      <element id="artifact" artifact-name="distributetest_diaoyong:war exploded" />
+    </root>
+  </artifact>
+</component>

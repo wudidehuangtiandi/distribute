@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/dtx-seata-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/dtx-seata-demo/dtx-seata-demo-bank1/pom.xml" />
+        <option value="$PROJECT_DIR$/dtx-seata-demo/dtx-seata-demo-bank2/pom.xml" />
+        <option value="$PROJECT_DIR$/discover-server/pom.xml" />
+        <option value="$USER_HOME$/Desktop/专题/wanxin-hmily-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/dtx-notifymsg-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/dtx-tcc-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/dtx-txmsg-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/dtx-txmsg-demo/dtx-txmsg-demo-bank1/pom.xml" />
+        <option value="$PROJECT_DIR$/dtx-txmsg-demo/dtx-txmsg-demo-bank2/pom.xml" />
+        <option value="$PROJECT_DIR$/dtx-notifymsg-demo/dtx-notifymsg-demo-bank1/pom.xml" />
+        <option value="$PROJECT_DIR$/dtx-notifymsg-demo/dtx-notifymsg-demo-bank2/pom.xml" />
+        <option value="$PROJECT_DIR$/dtx-notifymsg-demo/dtx-notifymsg-demo-pay/pom.xml" />
+        <option value="$PROJECT_DIR$/dtx-tcc-demo/dtx-tcc-demo-bank1/pom.xml" />
+        <option value="$PROJECT_DIR$/dtx-tcc-demo/dtx-tcc-demo-bank2/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$USER_HOME$/Desktop/专题/wanxin-hmily-demo/hmily-demo-bank1/pom.xml" />
+        <option value="$USER_HOME$/Desktop/专题/wanxin-hmily-demo/hmily-demo-bank2/pom.xml" />
+        <option value="$USER_HOME$/Desktop/专题/wanxin-hmily-demo/hmily-demo-discover-server/pom.xml" />
+        <option value="$USER_HOME$/Desktop/专题/wanxin-hmily-demo/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>

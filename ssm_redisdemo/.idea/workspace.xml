@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="da1b3226-5af9-4a5c-b43b-48a4699376c1" name="Default" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="XML Properties File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>poolConfig</find>
+      <find>LettucePool</find>
+      <find>pool</find>
+      <find>bui</find>
+      <find>bu</find>
+      <find>LettucePoolingClientConfigurationBuilder</find>
+      <find>p</find>
+      <find>GenericObjectPoolConfig</find>
+    </findStrings>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\mavenrepository\maven_repository" />
+        <option name="mavenHome" value="E:/maven/apache-maven-3.5.2" />
+        <option name="userSettingsFile" value="E:\maven\apache-maven-3.5.2\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="jreName" value="#JAVA_HOME" />
+    <option name="vmOptions" value="-DarchetypeCatalog=internal" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="65" />
+    <option name="y" value="143" />
+    <option name="width" value="1380" />
+    <option name="height" value="1047" />
+  </component>
+  <component name="ProjectId" id="1fIHudLtRoDEV69XGoLs1oVl5wE" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="nodejs_interpreter_path" value="D:/javafile/nodejs/node" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\newworkspace\ssm_redisdemo\src\main\resources\jedis" />
+      <recent name="D:\newworkspace\ssm_redisdemo\src\test\java\com\heibaiying\jedis" />
+      <recent name="D:\newworkspace\ssm_redisdemo\src" />
+      <recent name="D:\newworkspace\ssm_redisdemo\src\main\java" />
+      <recent name="D:\newworkspace\ssm_redisdemo\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.heibaiying.jedis" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\newworkspace\ssm_redisdemo\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.SpringDataRedisTest.Set">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JedisSamples.Get" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ssm_redisdemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.heibaiying.jedis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.heibaiying.jedis" />
+      <option name="MAIN_CLASS_NAME" value="com.heibaiying.jedis.JedisSamples" />
+      <option name="METHOD_NAME" value="Get" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JedisSamples.GetS" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ssm_redisdemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.heibaiying.jedis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.heibaiying.jedis" />
+      <option name="MAIN_CLASS_NAME" value="com.heibaiying.jedis.JedisSamples" />
+      <option name="METHOD_NAME" value="GetS" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JedisSamples.setEx" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ssm_redisdemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.heibaiying.jedis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.heibaiying.jedis" />
+      <option name="MAIN_CLASS_NAME" value="com.heibaiying.jedis.JedisSamples" />
+      <option name="METHOD_NAME" value="setEx" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringDataRedisTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ssm_redisdemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.heibaiying.jedis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.heibaiying.jedis" />
+      <option name="MAIN_CLASS_NAME" value="com.heibaiying.jedis.SpringDataRedisTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringDataRedisTest.Set" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ssm_redisdemo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.heibaiying.jedis.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.heibaiying.jedis" />
+      <option name="MAIN_CLASS_NAME" value="com.heibaiying.jedis.SpringDataRedisTest" />
+      <option name="METHOD_NAME" value="Set" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.JedisSamples.Get" />
+      <item itemvalue="JUnit.JedisSamples.setEx" />
+      <item itemvalue="JUnit.JedisSamples.GetS" />
+      <item itemvalue="JUnit.SpringDataRedisTest.Set" />
+      <item itemvalue="JUnit.SpringDataRedisTest" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.SpringDataRedisTest.Set" />
+        <item itemvalue="JUnit.SpringDataRedisTest" />
+        <item itemvalue="JUnit.JedisSamples.GetS" />
+        <item itemvalue="JUnit.JedisSamples.setEx" />
+        <item itemvalue="JUnit.JedisSamples.Get" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="da1b3226-5af9-4a5c-b43b-48a4699376c1" name="Default" comment="" />
+      <created>1580122326016</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1580122326016</updated>
+      <workItem from="1580122327851" duration="1669000" />
+      <workItem from="1580124847811" duration="1360000" />
+      <workItem from="1580126212978" duration="3052000" />
+      <workItem from="1580170394870" duration="757000" />
+      <workItem from="1580172412686" duration="54000" />
+      <workItem from="1580172468797" duration="6629000" />
+      <workItem from="1580185126043" duration="9618000" />
+      <workItem from="1580194771146" duration="10371000" />
+      <workItem from="1580205409669" duration="3267000" />
+      <workItem from="1580263692219" duration="595000" />
+      <workItem from="1580277048386" duration="10000" />
+      <workItem from="1580299138695" duration="11000" />
+      <workItem from="1580350227775" duration="194000" />
+      <workItem from="1580352288172" duration="1113000" />
+      <workItem from="1580529189274" duration="6000" />
+      <workItem from="1580603705461" duration="2125000" />
+      <workItem from="1580606259806" duration="5171000" />
+      <workItem from="1581214199836" duration="11000" />
+      <workItem from="1581301055742" duration="187000" />
+      <workItem from="1581316658704" duration="48000" />
+      <workItem from="1581317390787" duration="280000" />
+      <workItem from="1581333640533" duration="171000" />
+      <workItem from="1581383426076" duration="9000" />
+      <workItem from="1582077013385" duration="1084000" />
+      <workItem from="1582344249866" duration="608000" />
+      <workItem from="1595898914386" duration="99000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="SpringDataRedisTest - 2020.01.28 at 17h 57m 10s.xml">
+      <configuration name="SpringDataRedisTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SpringDataRedisTest - 2020.01.28 at 18h 09m 06s.xml">
+      <configuration name="SpringDataRedisTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SpringDataRedisTest - 2020.01.28 at 18h 17m 41s.xml">
+      <configuration name="SpringDataRedisTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SpringDataRedisTest - 2020.01.28 at 18h 17m 58s.xml">
+      <configuration name="SpringDataRedisTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SpringDataRedisTest - 2020.01.28 at 18h 35m 06s.xml">
+      <configuration name="SpringDataRedisTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SpringDataRedisTest_Set - 2020.01.28 at 17h 47m 07s.xml">
+      <configuration name="SpringDataRedisTest.Set" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SpringDataRedisTest_Set - 2020.01.28 at 18h 44m 22s.xml">
+      <configuration name="SpringDataRedisTest.Set" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SpringDataRedisTest_Set - 2020.01.28 at 18h 44m 43s.xml">
+      <configuration name="SpringDataRedisTest.Set" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SpringDataRedisTest_Set - 2020.01.28 at 18h 48m 01s.xml">
+      <configuration name="SpringDataRedisTest.Set" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SpringDataRedisTest_Set - 2020.01.28 at 18h 48m 32s.xml">
+      <configuration name="SpringDataRedisTest.Set" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-redis/2.0.6.RELEASE/spring-data-redis-2.0.6.RELEASE.jar!/org/springframework/data/redis/connection/lettuce/DefaultLettuceClientConfiguration.class</url>
+          <line>23</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArquillianSettingsConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>ssm_redisdemo:war</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>lib</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>ssm_redisdemo</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: c3p0:c3p0:0.9.1.2</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--注解AOP-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+
+    <bean id="springBeanFactory" class="org.mengyun.tcctransaction.spring.support.SpringBeanFactory"/>
+
+    <!--TCC事务配置器-->
+    <bean id="transactionConfigurator" class="org.mengyun.tcctransaction.spring.support.SpringTransactionConfigurator"
+          init-method="init"/>
+
+    <!--注解切面-->
+    <bean id="compensableTransactionAspect" class="org.mengyun.tcctransaction.spring.ConfigurableTransactionAspect"
+          init-method="init">
+        <property name="transactionConfigurator" ref="transactionConfigurator"/>
+    </bean>
+
+    <!--资源协调切面-->
+    <bean id="resourceCoordinatorAspect" class="org.mengyun.tcctransaction.spring.ConfigurableCoordinatorAspect"
+          init-method="init">
+        <property name="transactionConfigurator" ref="transactionConfigurator"/>
+    </bean>
+
+   <!-- &lt;!&ndash;启动定时任务&ndash;&gt;
+    <task:annotation-driven/>
+
+    &lt;!&ndash;事务恢复&ndash;&gt;
+    <bean id="transactionRecovery" class="org.mengyun.tcctransaction.recover.TransactionRecovery">
+        <property name="transactionConfigurator" ref="transactionConfigurator"/>
+    </bean>
+     &lt;!&ndash;事务恢复任务调度器&ndash;&gt;
+    <bean id="recoverScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"/>
+
+    &lt;!&ndash;事务恢复调度任务，初始化方法:init&ndash;&gt;
+    <bean id="recoverScheduledJob" class="org.mengyun.tcctransaction.spring.recover.RecoverScheduledJob"
+          init-method="init">
+        <property name="transactionRecovery" ref="transactionRecovery"/>
+        <property name="transactionConfigurator" ref="transactionConfigurator"/>
+        <property name="scheduler" ref="recoverScheduler"/>
+    </bean>-->
+
+    <!--以下为根据官方文档的配置-->
+    <!--持久化事务日志，数据源需要重新配置,会在数据库自动建事务日志表-->
+    <bean id="transactionRepository"
+          class="org.mengyun.tcctransaction.spring.repository.SpringJdbcTransactionRepository">
+        <property name="dataSource" ref="tccdataSource"/>
+        <property name="domain" value="order"></property>
+        <property name="tbSuffix" value="_order"></property>
+    </bean>
+
+    <bean id="tccdataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <property name="driverClass" value="${jdbc.driver}"></property>
+        <property name="jdbcUrl" value="${jdbc.url}"></property>
+        <property name="user" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+
+     <!--事务恢复策略-->
+    <!--其中maxRetryCount表示一个事务最多尝试恢复次数，超过将不再自动恢复，需要人工干预，默认是30次。
+     recoverDuration表示一个事务日志当超过一定时间间隔后没有更新就会被认为是发生了异常，需要恢复，
+     恢复Job将扫描超过这个时间间隔依旧没有更新的事务日志，并对这些事务进行恢复，时间单位是秒，默认是120秒。
+     cronExpression表示恢复Job触发间隔配置，默认是0 */1 * * * ?。
+     delayCancelExceptions(1.2.3版中新加的配置)表示系统发生了设置的异常时，主事务不立即rollback，
+     而是由恢复job来执行事务恢复。通常需要将超时异常设置为delayCancelExceptions，这样可以避免因为服务调用时发生了超时异常，
+     主事务如果立刻rollback, 但是从事务还没执行完，从而造成主事务rollback失败。
+     示例中com.alibaba.dubbo.remoting.TimeoutException为底层rpc框架为dubbo，超时异常发生时框架抛出的超时异常类，
+     需要将其加入delayCancelExceptions中。-->
+<!--    <bean class="org.mengyun.tcctransaction.spring.recover.DefaultRecoverConfig">
+        <property name="maxRetryCount" value="2"/>
+        <property name="recoverDuration" value="10"/>
+        <property name="cronExpression" value="0 */1 * * * ?"/>
+        <property name="delayCancelExceptions">
+            <util:set>
+                <value>org.apache.dubbo.remoting.TimeoutException</value>
+            </util:set>
+        </property>
+    </bean>-->
+
+</beans>

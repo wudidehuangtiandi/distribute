@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="discover-server" />
+        <module name="dtx-notifymsg-demo" />
+        <module name="dtx-notifymsg-demo-bank1" />
+        <module name="dtx-notifymsg-demo-bank2" />
+        <module name="dtx-notifymsg-demo-pay" />
+        <module name="dtx-seata-demo" />
+        <module name="dtx-seata-demo-bank1" />
+        <module name="dtx-seata-demo-bank2" />
+        <module name="dtx-tcc-demo" />
+        <module name="dtx-tcc-demo-bank1" />
+        <module name="dtx-tcc-demo-bank2" />
+        <module name="dtx-txmsg-demo" />
+        <module name="dtx-txmsg-demo-bank1" />
+        <module name="dtx-txmsg-demo-bank2" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="discover-server" target="1.8" />
+      <module name="dtx" target="1.8" />
+      <module name="dtx-notifymsg-demo" target="1.8" />
+      <module name="dtx-notifymsg-demo-bank1" target="1.8" />
+      <module name="dtx-notifymsg-demo-bank2" target="1.8" />
+      <module name="dtx-notifymsg-demo-pay" target="1.8" />
+      <module name="dtx-seata-demo" target="1.8" />
+      <module name="dtx-seata-demo-bank1" target="1.8" />
+      <module name="dtx-seata-demo-bank2" target="1.8" />
+      <module name="dtx-tcc-demo" target="1.8" />
+      <module name="dtx-tcc-demo-bank1" target="1.8" />
+      <module name="dtx-tcc-demo-bank2" target="1.8" />
+      <module name="dtx-txmsg-demo" target="1.8" />
+      <module name="dtx-txmsg-demo-bank1" target="1.8" />
+      <module name="dtx-txmsg-demo-bank2" target="1.8" />
+      <module name="hmily-demo-bank1" target="1.8" />
+      <module name="hmily-demo-bank2" target="1.8" />
+      <module name="hmily-demo-discover-server" target="1.5" />
+      <module name="wanxin-hmily-demo" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

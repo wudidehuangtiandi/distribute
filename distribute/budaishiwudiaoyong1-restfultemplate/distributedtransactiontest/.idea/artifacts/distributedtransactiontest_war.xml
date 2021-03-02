@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="distributedtransactiontest:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="distributedtransactiontest-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="distributedtransactiontest:war exploded" />
+    </root>
+  </artifact>
+</component>
